@@ -24,12 +24,12 @@
 
 | 配置项 | 当前脱敏值 |
 | --- | --- |
-| `PlatformInfo -> Generic -> SystemSerialNumber` | `YOUR_SERIAL_HERE` |
-| `PlatformInfo -> Generic -> MLB` | `YOUR_MLB_HERE` |
+| `PlatformInfo -> Generic -> SystemSerialNumber` | `W00000000001` |
+| `PlatformInfo -> Generic -> MLB` | `M0000000000000001` |
 | `PlatformInfo -> Generic -> SystemUUID` | `00000000-0000-0000-0000-000000000000` |
-| `PlatformInfo -> Generic -> ROM` | `00 00 00 00 00 00`（6 个零字节） |
+| `PlatformInfo -> Generic -> ROM` | `11 22 33 44 55 66` |
 
-上述值只是占位符，不能直接用于正常登录 Apple 服务。使用前请通过 GenSMBIOS 或其他可信工具，为 `MacBookPro15,2` 生成属于你自己设备的唯一 SMBIOS 信息，并替换全部四项占位值。
+上述值取自 OpenCore 1.0.7 官方 `Sample.plist`，字段格式合法，但仍然只是公开示例占位值，不能直接用于正常登录 Apple 服务。使用前请通过 GenSMBIOS 或其他可信工具，为 `MacBookPro15,2` 生成属于你自己设备的唯一 SMBIOS 信息，并替换全部四项占位值。
 
 请勿复用他人的 SMBIOS，也不要将自己的真实序列号、MLB、UUID 或 ROM 公开上传。替换后，建议使用 OpenCore 1.0.7 附带的 `ocvalidate` 重新检查 `config.plist`。
 
