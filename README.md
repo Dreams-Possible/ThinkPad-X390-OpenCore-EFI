@@ -1,26 +1,38 @@
 # ThinkPad X390 OpenCore EFI
 
-OpenCore EFI configuration for the Lenovo ThinkPad X390.
+适用于联想 ThinkPad X390 的 OpenCore EFI 配置。
 
-## Important: generate your own SMBIOS
+## 当前环境
 
-The EFI published in this repository has been sanitized. The following values in
-`EFI/OC/config.plist` are placeholders and must be replaced before use:
+- 机型：Lenovo ThinkPad X390
+- macOS 版本：macOS 14.8
+- OpenCore 版本：1.0.7
+- SMBIOS 机型：`MacBookPro15,2`
 
-- `PlatformInfo -> Generic -> SystemSerialNumber`
-- `PlatformInfo -> Generic -> MLB`
-- `PlatformInfo -> Generic -> SystemUUID`
-- `PlatformInfo -> Generic -> ROM`
+## 驱动状态
 
-Generate a unique `MacBookPro15,2` SMBIOS with GenSMBIOS or another trusted tool.
-Never reuse another machine's identifiers or publish your own identifiers in a
-public repository.
+本 EFI 已在 macOS 14.8 下使用。除下列两项外，其余已配置的硬件与驱动均正常工作：
 
-After replacing these values, validate `config.plist` with the `ocvalidate`
-utility matching the included OpenCore version before booting.
+- 指纹识别：macOS 下无法驱动。
+- 人脸识别：X390 的 Windows Hello 红外人脸识别无法在 macOS 中作为 Face ID 使用。
 
-## Repository contents
+正常工作的部分包括核显硬件加速、屏幕亮度与亮度快捷键、声音、Wi-Fi、蓝牙、有线网络、USB、NVMe、键盘、触控板、电池状态与传感器等。
 
-Only the bootable `EFI` directory is included. Research files, reference EFI
-repositories, helper tools, and machine-specific identifiers are intentionally
-excluded.
+## SMBIOS 脱敏说明
+
+为避免泄露本机的唯一标识，公开仓库中的 `EFI/OC/config.plist` 已经脱敏。当前占位值如下：
+
+| 配置项 | 当前脱敏值 |
+| --- | --- |
+| `PlatformInfo -> Generic -> SystemSerialNumber` | `YOUR_SERIAL_HERE` |
+| `PlatformInfo -> Generic -> MLB` | `YOUR_MLB_HERE` |
+| `PlatformInfo -> Generic -> SystemUUID` | `00000000-0000-0000-0000-000000000000` |
+| `PlatformInfo -> Generic -> ROM` | `00 00 00 00 00 00`（6 个零字节） |
+
+上述值只是占位符，不能直接用于正常登录 Apple 服务。使用前请通过 GenSMBIOS 或其他可信工具，为 `MacBookPro15,2` 生成属于你自己设备的唯一 SMBIOS 信息，并替换全部四项占位值。
+
+请勿复用他人的 SMBIOS，也不要将自己的真实序列号、MLB、UUID 或 ROM 公开上传。替换后，建议使用 OpenCore 1.0.7 附带的 `ocvalidate` 重新检查 `config.plist`。
+
+## 仓库内容
+
+仓库仅包含可启动的 `EFI` 目录和本说明文件，不包含研究资料、参考 EFI、辅助工具、本机 SMBIOS 或其他个人化唯一标识。
