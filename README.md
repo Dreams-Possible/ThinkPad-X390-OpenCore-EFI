@@ -9,6 +9,21 @@
 - OpenCore 版本：1.0.7
 - SMBIOS 机型：`MacBookPro15,2`
 
+## 本机配置
+
+| 项目 | 配置 |
+| --- | --- |
+| 机型 | Lenovo ThinkPad X390 |
+| 处理器 | Intel Core i7-8665U，4 核 8 线程 |
+| 核显 | Intel UHD Graphics 620，1536 MB，支持 Metal 3 |
+| 内存 | 16 GB DDR4-2400，Samsung 8 GB × 2 |
+| 内屏 | 1920 × 1080 FHD |
+| 固态硬盘 | 512 GB NVMe，PCIe 3.0 ×4，TRIM 正常 |
+| 无线网络 | Intel 无线网卡，使用 AirportItlwm |
+| 蓝牙 | Intel `8087:0AAA` |
+| 有线网络 | Intel 网卡，使用 IntelMausi |
+| 摄像头 | Chicony `04F2:B681` |
+
 ## 驱动状态
 
 本 EFI 已在 macOS 14.8 下使用。除下列两项外，其余已配置的硬件与驱动均正常工作：
@@ -36,3 +51,9 @@
 ## 仓库内容
 
 仓库仅包含可启动的 `EFI` 目录和本说明文件，不包含研究资料、参考 EFI、辅助工具、本机 SMBIOS 或其他个人化唯一标识。
+
+## 开源许可
+
+本项目采用 [GNU General Public License v3.0](LICENSE) 发布。
+
+仓库内包含 OpenCore、Kext 和 EFI 驱动等第三方组件；这些组件的版权归各自作者所有，并继续遵循各自的上游许可证。
