@@ -1,0 +1,15 @@
+# macOS Finder metadata
+.DS_Store
+**/.DS_Store
+
+# AppleDouble resource forks
+._*
+**/._*
+
+# macOS filesystem metadata
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# Archive metadata directories
+__MACOSX/
